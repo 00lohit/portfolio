@@ -87,7 +87,7 @@ const ShowAlert = ({ show, data, showAlert, hideAlert }: AlertContextType) => {
   return (
     <div className="flex justify-center w-full">
       <motion.div
-        className="fixed top-4"
+        className="fixed top-4 z-50"
         initial="hidden"
         animate={show ? "visible" : "hidden"}
         variants={variants}
