@@ -83,12 +83,20 @@ const Reactions = () => {
         {views} {views == 1 ? "View" : "Views"}
       </p>
       <Separator orientation="vertical" />
-      <Heart
-        fill={likes > 0 ? "red" : "transparent"}
-        color={likes > 0 ? "red" : "white"}
-        onClick={onClick}
-        className="w-4 h-4 md:w-5 md:h-5 cursor-pointer"
-      />
+      {likes > 0 ? (
+        <Heart
+          fill={"red"}
+          color={"red"}
+          onClick={onClick}
+          className="w-4 h-4 md:w-5 md:h-5 cursor-pointer"
+        />
+      ) : (
+        <Heart
+          onClick={onClick}
+          className="w-4 h-4 md:w-5 md:h-5 cursor-pointer"
+        />
+      )}
+
       <p onClick={onClick} className="cursor-pointer">
         {likes} {likes == 1 ? "Like" : "Likes"}
       </p>
