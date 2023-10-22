@@ -1,12 +1,14 @@
 "use client";
 import { useInView, motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function Home() {
   return (
     <main>
       <NavBar />
-      <div className="h-screen w-screen" />
+      <div className="h-screen w-screen">
+        <Content />
+      </div>
     </main>
   );
 }
@@ -25,6 +27,7 @@ import { Mail, Phone, MapPin, Copy, File } from "lucide-react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useAlert } from "@/components/custom/show-alert";
 import Link from "next/link";
+import Content from "./Content";
 
 const About = () => {
   const { showAlert } = useAlert();
@@ -122,7 +125,7 @@ const Logo = () => {
   };
 
   return (
-    <div className="flex row items-center">
+    <div className="flex row items-center cursor-default">
       <motion.h1
         className="text-4xl z-20 font-semibold text-black bg-[#FF9100] py-1 px-3 rounded-md mr-2"
         animate={{
