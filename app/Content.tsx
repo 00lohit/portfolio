@@ -1,5 +1,7 @@
 import Image from "next/image";
 import add from "@/public/content/add.gif";
+import bal from "@/public/content/balance.gif";
+import gen from "@/public/content/gen.gif";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -23,8 +25,8 @@ export default function Content() {
   }, [timer]);
 
   return (
-    <div className="p-4">
-      <div className="w-2/3">
+    <div className="flex flex-col md:flex-row p-4">
+      <div className="md:w-2/3">
         <div className="relative">
           {addOver ? (
             <MonkeyGif />
@@ -42,13 +44,14 @@ export default function Content() {
             </>
           )}
         </div>
-        <h3 className="mt-4 text-xl font-semibold">
+        <h3 className="mt-4 md:text-xl font-semibold">
           My Day in the Code Mines: A Personal Glimpse into My Normal
           Programming Routine
         </h3>
-        <Separator className="my-4 " />
+        <Separator className="my-2 md:my-4" />
         <Reactions />
       </div>
+      <ExtraContent />
     </div>
   );
 }
@@ -75,7 +78,7 @@ const Reactions = () => {
 
   return (
     <div className="flex items-center space-x-2 h-8 opacity-75 font-medium text-sm cursor-default">
-      <Eye size={20} />
+      <Eye className="w-4 h-4 md:w-5 md:h-5" />
       <p>
         {views} {views == 1 ? "View" : "Views"}
       </p>
@@ -84,14 +87,13 @@ const Reactions = () => {
         fill={likes > 0 ? "red" : "transparent"}
         color={likes > 0 ? "red" : "white"}
         onClick={onClick}
-        className="cursor-pointer"
-        size={20}
+        className="w-4 h-4 md:w-5 md:h-5 cursor-pointer"
       />
       <p onClick={onClick} className="cursor-pointer">
         {likes} {likes == 1 ? "Like" : "Likes"}
       </p>
       <Separator orientation="vertical" />
-      <Calendar size={20} />
+      <Calendar className="w-4 h-4 md:w-5 md:h-5" />
       <p>69 weeks ago</p>
     </div>
   );
@@ -112,4 +114,18 @@ const MonkeyGif = () => (
     unoptimized={true}
     className="w-full h-auto"
   />
+);
+
+const ExtraContent = () => (
+  <div className="flex flex-row md:flex-col max-w-full md:w-1/3 my-8 md:my-0">
+    {[bal, gen].map((e) => (
+      <Image
+        src={e}
+        layout={"responsive"}
+        alt={`A cute animal!`}
+        // unoptimized={true}
+        className="w-1/2 md:w-full h-auto scale-95 md:hover:scale-100 transition-transform duration-300 ease-in-out"
+      />
+    ))}
+  </div>
 );
