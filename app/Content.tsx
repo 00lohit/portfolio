@@ -118,9 +118,10 @@ const MonkeyGif = () => (
 
 const ExtraContent = () => (
   <div className="flex flex-row md:flex-col max-w-full md:w-1/3 my-8 md:my-0">
-    {[bal, gen].map((e) => (
+    {[bal, gen].map((e, i) => (
       <Image
         src={e}
+        key={i}
         layout={"responsive"}
         alt={`A cute animal!`}
         // unoptimized={true}
