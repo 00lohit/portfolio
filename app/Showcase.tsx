@@ -66,10 +66,10 @@ const ShowcaseItem = ({
         duration: 0.69,
       },
     },
-    enter: {
-      transform: "translateX(+200px)",
-      opacity: 0,
-    },
+    // enter: {
+    //   transform: "translateX(+200px)",
+    //   opacity: 0,
+    // },
     exit: {
       transform: "translateX(-200px)",
       opacity: 0,
@@ -78,7 +78,11 @@ const ShowcaseItem = ({
 
   useEffect(() => {
     setAnimate(({ value, count }) => {
-      let newValue = count % 2 ? "visible" : count % 3 ? "enter" : "exit";
+      let newValue =
+        count % 2
+          ? "visible"
+          : // count % 3 ? "enter" :
+            "exit";
       let newCount = count + 1;
 
       return { value: newValue, count: newCount };
