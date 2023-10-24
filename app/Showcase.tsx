@@ -9,16 +9,14 @@ export default function Showcase() {
   ];
   return (
     <>
-      {data.map(({ videoId }) => (
-        <div className="h-screen flex">
+      {data.map(({ videoId }, i) => (
+        <div key={i.toString()} className="h-screen flex">
           <MobileSlides videoId={videoId} />
         </div>
       ))}
     </>
   );
 }
-
-import { useEffect, useState } from "react";
 
 const MobileSlides = ({ videoId }: { videoId: string }) => {
   let url = "https://drive.google.com/uc?export=download&id=" + videoId;
