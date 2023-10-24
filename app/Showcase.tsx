@@ -3,6 +3,8 @@ import frame from "@/public/showcase/frame.png";
 import { Skeleton } from "@/components/ui/skeleton";
 import playStore from "@/public/showcase/googleplay.svg";
 import appStore from "@/public/showcase/appstore.svg";
+import { useInView, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export default function Showcase() {
   let data = [
@@ -33,60 +35,110 @@ export default function Showcase() {
         "https://play.google.com/store/apps/details?id=com.coldkonnect.customer",
     },
   ];
+
   return (
     <div className="flex flex-col items-center justify-center">
-      {data.map(({ videoId, title, titleStyle, appStore, playStore }, i) => (
-        <div
-          key={i.toString()}
-          className="min-h-screen w-screen p-4 flex items-center justify-center flex-col-reverse md:flex-row"
-        >
-          <div>
-            <MobileSlides videoId={videoId} />
-          </div>
-
-          <div className="my-8 md:mr-20">
-            <h4 className={titleStyle}>{title}</h4>
-            <p className="mt-4 text-lg">
-              FarmOR Partner App, helps Input retailers & FPOs source quality
-              inputs for their shop from hundreds of manufacturers. Helps them
-              manage their farmers and E-commerce information. Currently we are
-              serving for retailers & FPOs in Telangana & Andhra Pradesh.
-            </p>
-
-            <div className="flex flex-col md:flex-row mt-8 md:space-y-0  space-x-0 space-y-2  md:space-x-2">
-              {playStore ? (
-                <a
-                  target="_blank"
-                  href={playStore}
-                  className="hover:scale-105 transition-transform duration-300 ease-in-out"
-                >
-                  <PlayStore />
-                </a>
-              ) : (
-                <a className="grayscale opacity-75">
-                  <PlayStore />
-                </a>
-              )}
-              {appStore ? (
-                <a
-                  target="_blank"
-                  href={appStore}
-                  className="hover:scale-105 transition-transform duration-300 ease-in-out"
-                >
-                  <AppStore />
-                </a>
-              ) : (
-                <a className="grayscale opacity-75">
-                  <AppStore />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
+      {data.map((item, index) => (
+        <ShowcaseItem {...{ ...item, index }} />
       ))}
     </div>
   );
 }
+
+const ShowcaseItem = ({
+  videoId,
+  title,
+  titleStyle,
+  appStore,
+  playStore,
+  index,
+}: any) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  const [animate, setAnimate] = useState({ value: "exit", count: 1 });
+
+  const variants = {
+    visible: {
+      transform: "translateX(0px)",
+      opacity: 1,
+      transition: {
+        ease: "easeOut",
+        duration: 0.69,
+      },
+    },
+    enter: {
+      transform: "translateX(+200px)",
+      opacity: 0,
+    },
+    exit: {
+      transform: "translateX(-200px)",
+      opacity: 0,
+    },
+  };
+
+  useEffect(() => {
+    setAnimate(({ value, count }) => {
+      let newValue = count % 2 ? "visible" : count % 3 ? "enter" : "exit";
+      let newCount = count + 1;
+
+      return { value: newValue, count: newCount };
+    });
+  }, [isInView]);
+
+  return (
+    <motion.div
+      animate={animate.value}
+      variants={variants}
+      ref={ref}
+      key={index.toString()}
+      className="min-h-screen w-screen p-4 flex items-center justify-center flex-col-reverse md:flex-row"
+    >
+      <div>
+        <MobileSlides videoId={videoId} />
+      </div>
+
+      <div className="my-8 md:mr-20">
+        <h4 className={titleStyle}>{title}</h4>
+        <p className="mt-4 text-lg">
+          FarmOR Partner App, helps Input retailers & FPOs source quality inputs
+          for their shop from hundreds of manufacturers. Helps them manage their
+          farmers and E-commerce information. Currently we are serving for
+          retailers & FPOs in Telangana & Andhra Pradesh.
+        </p>
+
+        <div className="flex flex-col md:flex-row mt-8 md:space-y-0  space-x-0 space-y-2  md:space-x-2">
+          {playStore ? (
+            <a
+              target="_blank"
+              href={playStore}
+              className="hover:scale-105 transition-transform duration-300 ease-in-out"
+            >
+              <PlayStore />
+            </a>
+          ) : (
+            <a className="grayscale opacity-75">
+              <PlayStore />
+            </a>
+          )}
+          {appStore ? (
+            <a
+              target="_blank"
+              href={appStore}
+              className="hover:scale-105 transition-transform duration-300 ease-in-out"
+            >
+              <AppStore />
+            </a>
+          ) : (
+            <a className="grayscale opacity-75">
+              <AppStore />
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const MobileSlides = ({ videoId }: { videoId: string }) => {
   let url = "https://drive.google.com/uc?export=download&id=" + videoId;

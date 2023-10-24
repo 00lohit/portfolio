@@ -26,7 +26,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Mail, Phone, MapPin, Copy, File } from "lucide-react";
+import { Mail, Phone, MapPin, Copy, File, Linkedin } from "lucide-react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useAlert } from "@/components/custom/show-alert";
 import Link from "next/link";
@@ -62,6 +62,20 @@ const About = () => {
             <span className="flex flex-row">
               <File className="mr-2 h-4 w-4" />
               <span>Resume</span>
+            </span>
+          </DropdownMenuItem>
+        </Link>
+
+        <DropdownMenuSeparator />
+
+        <Link
+          target="_blank"
+          href={"https://www.linkedin.com/in/lohit-prakash-367847222"}
+        >
+          <DropdownMenuItem>
+            <span className="flex flex-row">
+              <Linkedin className="mr-2 h-4 w-4" />
+              <span>LinkedIn</span>
             </span>
           </DropdownMenuItem>
         </Link>
