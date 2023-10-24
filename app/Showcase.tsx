@@ -55,8 +55,6 @@ const ShowcaseItem = ({
   const ref = useRef(null);
   const isInView = useInView(ref);
 
-  const [animate, setAnimate] = useState({ value: "exit", count: 1 });
-
   const variants = {
     visible: {
       transform: "translateX(0px)",
@@ -66,32 +64,15 @@ const ShowcaseItem = ({
         duration: 0.69,
       },
     },
-    // enter: {
-    //   transform: "translateX(+200px)",
-    //   opacity: 0,
-    // },
-    exit: {
+    hidden: {
       transform: "translateX(-200px)",
       opacity: 0,
     },
   };
 
-  useEffect(() => {
-    setAnimate(({ value, count }) => {
-      let newValue =
-        count % 2
-          ? "visible"
-          : // count % 3 ? "enter" :
-            "exit";
-      let newCount = count + 1;
-
-      return { value: newValue, count: newCount };
-    });
-  }, [isInView]);
-
   return (
     <motion.div
-      animate={animate.value}
+      animate={isInView ? "visible" : "hidden"}
       variants={variants}
       ref={ref}
       className="min-h-screen w-screen p-4 flex items-center justify-center flex-col-reverse md:flex-row"
