@@ -130,10 +130,9 @@ const ExtraContent = () => (
       { img: bal, link: "https://www.youtube.com/watch?v=HjPgdhRsGIQ" },
       { img: gen, link: "https://www.youtube.com/watch?v=R8vlNbk0Yww" },
     ].map(({ img, link }, i) => (
-      <a target="_blank" href={link}>
+      <a target="_blank" href={link} key={i.toString()}>
         <Image
           src={img}
-          key={i}
           layout={"responsive"}
           alt={`A cute animal!`}
           // unoptimized={true}
