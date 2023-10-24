@@ -8,6 +8,7 @@ export default function Home() {
       <NavBar />
       <div className="h-screen w-screen">
         <Content />
+        <Showcase />
       </div>
     </main>
   );
@@ -28,6 +29,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useAlert } from "@/components/custom/show-alert";
 import Link from "next/link";
 import Content from "./Content";
+import Showcase from "./Showcase";
 
 const About = () => {
   const { showAlert } = useAlert();
