@@ -39,7 +39,7 @@ export default function Showcase() {
   return (
     <div className="flex flex-col items-center justify-center">
       {data.map((item, index) => (
-        <ShowcaseItem {...{ ...item, index }} />
+        <ShowcaseItem {...{ ...item }} key={index.toString()} />
       ))}
     </div>
   );
@@ -51,7 +51,6 @@ const ShowcaseItem = ({
   titleStyle,
   appStore,
   playStore,
-  index,
 }: any) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -91,7 +90,6 @@ const ShowcaseItem = ({
       animate={animate.value}
       variants={variants}
       ref={ref}
-      key={index.toString()}
       className="min-h-screen w-screen p-4 flex items-center justify-center flex-col-reverse md:flex-row"
     >
       <div>
