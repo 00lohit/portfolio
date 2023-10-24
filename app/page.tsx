@@ -1,6 +1,7 @@
 "use client";
 import { useInView, motion } from "framer-motion";
 import { useRef } from "react";
+import burn from "@/public/content/burn.webp";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <div className="h-screen w-screen">
         <Content />
         <Showcase />
+        <Footer />
       </div>
     </main>
   );
@@ -30,6 +32,7 @@ import { useAlert } from "@/components/custom/show-alert";
 import Link from "next/link";
 import Content from "./Content";
 import Showcase from "./Showcase";
+import Image from "next/image";
 
 const About = () => {
   const { showAlert } = useAlert();
@@ -157,3 +160,21 @@ const Logo = () => {
     </div>
   );
 };
+
+const Footer = () => (
+  <div className="w-full h-auto flex flex-col md:flex-row p-4 items-center">
+    <p className="text-3xl md:text-4xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#fe6a47] to-[#fab62d] md:my-0 mr-0 md:mr-14 my-14">
+      Other projects/apps are currently taking a well-deserved nap or have gone
+      incognito due to company policies. They're in stealth mode, playing hide
+      and seek with the world. We promise they're not in trouble, just keeping
+      things mysterious!
+    </p>
+    <Image
+      src={burn}
+      layout={"responsive"}
+      alt={`A cute animal!`}
+      unoptimized={true}
+      className="w-full h-auto"
+    />
+  </div>
+);

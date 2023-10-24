@@ -126,15 +126,20 @@ const MonkeyGif = () => (
 
 const ExtraContent = () => (
   <div className="flex flex-row md:flex-col max-w-full md:w-1/3 my-8 md:my-0">
-    {[bal, gen].map((e, i) => (
-      <Image
-        src={e}
-        key={i}
-        layout={"responsive"}
-        alt={`A cute animal!`}
-        // unoptimized={true}
-        className="w-1/2 md:w-full h-auto scale-95 md:hover:scale-100 transition-transform duration-300 ease-in-out"
-      />
+    {[
+      { img: bal, link: "https://www.youtube.com/watch?v=HjPgdhRsGIQ" },
+      { img: gen, link: "https://www.youtube.com/watch?v=R8vlNbk0Yww" },
+    ].map(({ img, link }, i) => (
+      <a target="_blank" href={link}>
+        <Image
+          src={img}
+          key={i}
+          layout={"responsive"}
+          alt={`A cute animal!`}
+          // unoptimized={true}
+          className="w-1/2 md:w-full h-auto scale-95 md:hover:scale-100 transition-transform duration-300 ease-in-out"
+        />
+      </a>
     ))}
   </div>
 );
