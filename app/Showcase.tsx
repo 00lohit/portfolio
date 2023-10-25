@@ -37,11 +37,18 @@ export default function Showcase() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      {data.map((item, index) => (
-        <ShowcaseItem {...{ ...item }} key={index.toString()} />
-      ))}
-    </div>
+    <>
+      <div className="w-full flex items-center justify-center my-20">
+        <p className="text-5xl md:text-6xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#fe6a47] to-[#fab62d]">
+          {`Showcase`}
+        </p>
+      </div>
+      <div className="flex flex-col items-center justify-center">
+        {data.map((item, index) => (
+          <ShowcaseItem {...{ ...item }} key={index.toString()} />
+        ))}
+      </div>
+    </>
   );
 }
 
