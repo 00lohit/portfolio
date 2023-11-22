@@ -5,9 +5,19 @@ import playStore from "@/public/showcase/googleplay.svg";
 import appStore from "@/public/showcase/appstore.svg";
 import { useInView, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import certiwiz from "@/public/showcase/certiwiz.png";
 
 export default function Showcase() {
   let data = [
+    {
+      videoId: certiwiz,
+      title: "CertiWiz",
+      desc: `CertiWiz is a web application built with Next.js and PostgreSQL that allows users to access their certificates with a unique key, share them on social media, and generate certificates with ease`,
+      titleStyle:
+        "text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#08d108] to-[#017880]",
+      hideStore: true,
+      link: "https://certiwiz.00lohit.com/",
+    },
     {
       videoId: "1mHvxxgOKKRyENgq4mdZY_62X4VbR-uqX",
       title: " FarmOR Partner App",
@@ -58,6 +68,9 @@ const ShowcaseItem = ({
   titleStyle,
   appStore,
   playStore,
+  desc,
+  hideStore,
+  link,
 }: any) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -84,47 +97,60 @@ const ShowcaseItem = ({
       ref={ref}
       className="min-h-screen w-screen p-4 flex items-center justify-center flex-col-reverse md:flex-row"
     >
-      <div>
-        <MobileSlides videoId={videoId} />
-      </div>
+      {hideStore ? (
+        <a
+          target="_blank"
+          href={link}
+          className="w-[calc(100vw)]  md:w-[100vw] overflow-hidden flex justify-center items-center relative z-0 mr-32"
+        >
+          <Image
+            src={videoId}
+            layout={"responsive"}
+            alt={`A cute animal!`}
+            unoptimized={true}
+            className="w-auto h-auto"
+          />
+        </a>
+      ) : (
+        <div>
+          <MobileSlides videoId={videoId} />
+        </div>
+      )}
 
       <div className="my-8 md:mr-20">
         <h4 className={titleStyle}>{title}</h4>
-        <p className="mt-4 text-lg">
-          FarmOR Partner App, helps Input retailers & FPOs source quality inputs
-          for their shop from hundreds of manufacturers. Helps them manage their
-          farmers and E-commerce information. Currently we are serving for
-          retailers & FPOs in Telangana & Andhra Pradesh.
-        </p>
+        <p className="mt-4 text-lg">{desc}</p>
 
-        <div className="flex flex-col md:flex-row mt-8 md:space-y-0  space-x-0 space-y-2  md:space-x-2">
-          {playStore ? (
-            <a
-              target="_blank"
-              href={playStore}
-              className="hover:scale-105 transition-transform duration-300 ease-in-out"
-            >
-              <PlayStore />
-            </a>
-          ) : (
-            <a className="grayscale opacity-75">
-              <PlayStore />
-            </a>
-          )}
-          {appStore ? (
-            <a
-              target="_blank"
-              href={appStore}
-              className="hover:scale-105 transition-transform duration-300 ease-in-out"
-            >
-              <AppStore />
-            </a>
-          ) : (
-            <a className="grayscale opacity-75">
-              <AppStore />
-            </a>
-          )}
-        </div>
+        {!hideStore && (
+          <div className="flex flex-col md:flex-row mt-8 md:space-y-0  space-x-0 space-y-2  md:space-x-2">
+            {playStore ? (
+              <a
+                target="_blank"
+                href={playStore}
+                className="hover:scale-105 transition-transform duration-300 ease-in-out"
+              >
+                <PlayStore />
+              </a>
+            ) : (
+              <a className="grayscale opacity-75">
+                <PlayStore />
+              </a>
+            )}
+            {appStore ? (
+              <a
+                target="_blank"
+                href={appStore}
+                className="hover:scale-105 transition-transform duration-300 ease-in-out"
+              >
+                <AppStore />
+              </a>
+            ) : (
+              <a className="grayscale opacity-75">
+                <AppStore />
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </motion.div>
   );
