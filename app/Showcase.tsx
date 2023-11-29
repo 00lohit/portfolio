@@ -10,15 +10,6 @@ import certiwiz from "@/public/showcase/certiwiz.png";
 export default function Showcase() {
   let data = [
     {
-      videoId: certiwiz,
-      title: "CertiWiz",
-      desc: `CertiWiz is a web application built with Next.js and PostgreSQL that allows users to access their certificates with a unique key, share them on social media, and generate certificates with ease`,
-      titleStyle:
-        "text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#08d108] to-[#017880]",
-      hideStore: true,
-      link: "https://certiwiz.00lohit.com/",
-    },
-    {
       videoId: "1mHvxxgOKKRyENgq4mdZY_62X4VbR-uqX",
       title: " FarmOR Partner App",
       desc: `FarmOR Partner App, helps Input retailers & FPOs source quality inputs for their shop from hundreds of manufacturers. Helps them manage their farmers and E-commerce information. Currently we are serving for retailers & FPOs in Telangana & Andhra Pradesh.`,
@@ -43,6 +34,15 @@ export default function Showcase() {
       appStore: "",
       playStore:
         "https://play.google.com/store/apps/details?id=com.coldkonnect.customer",
+    },
+    {
+      videoId: certiwiz,
+      title: "CertiWiz",
+      desc: `CertiWiz is a web application built with Next.js and PostgreSQL that allows users to access their certificates with a unique key, share them on social media, and generate certificates with ease`,
+      titleStyle:
+        "text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#08d108] to-[#017880]",
+      hideStore: true,
+      link: "https://certiwiz.00lohit.com/",
     },
   ];
 
