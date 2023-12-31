@@ -57,7 +57,7 @@ const About = () => {
         
       <DropdownMenuSeparator /> */}
 
-        <Link target="_blank" href={"./Lohit_Resume.pdf"}>
+        <Link target="_blank" href={"./Resume.pdf"}>
           <DropdownMenuItem>
             <span className="flex flex-row">
               <File className="mr-2 h-4 w-4" />
@@ -68,10 +68,7 @@ const About = () => {
 
         <DropdownMenuSeparator />
 
-        <Link
-          target="_blank"
-          href={"https://www.linkedin.com/in/lohit-prakash-367847222"}
-        >
+        <Link target="_blank" href={"https://www.linkedin.com/in/00lohit"}>
           <DropdownMenuItem>
             <span className="flex flex-row">
               <Linkedin className="mr-2 h-4 w-4" />
