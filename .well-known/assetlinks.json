@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.turtil.nri",
+      "sha256_cert_fingerprints": [
+        "96:05:F0:75:47:A9:AC:0A:A2:CF:FD:21:06:67:C3:C3:94:C7:A3:F4:84:73:E0:D9:CF:4E:F3:AB:87:22:D0:EE"
+      ]
+    }
+  }
+]
