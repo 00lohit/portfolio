@@ -5,8 +5,11 @@
         "appIDs": [
           "9WSAC2X7NJ.com.turtil.nri"
         ],
-        "paths": [
-          "/app/*"
+        "components": [
+          {
+            "/app": "*",
+            "comment": "Matches all routes"
+          }
         ]
       }
     ]
