@@ -1,15 +1,11 @@
 {
   "applinks": {
+    "apps": [],
     "details": [
       {
-        "appIDs": [
-          "9WSAC2X7NJ.com.turtil.nri"
-        ],
-        "components": [
-          {
-            "/": "*",
-            "comment": "Matches all routes"
-          }
+        "appIDs": "9WSAC2X7NJ.com.turtil.nri",
+        "paths": [
+          "*"
         ]
       }
     ]
