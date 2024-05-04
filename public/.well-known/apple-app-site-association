@@ -7,7 +7,7 @@
         ],
         "components": [
           {
-            "/app": "*",
+            "/app": "/*",
             "comment": "Matches all routes"
           }
         ]
