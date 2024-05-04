@@ -1,13 +1,24 @@
 {
   "applinks": {
-    "apps": [],
     "details": [
       {
-        "appIDs": "9WSAC2X7NJ.com.turtil.nri",
+        "appIDs": [
+          "9WSAC2X7NJ.com.turtil.nri"
+        ],
         "paths": [
-          "*"
+          "/records/*"
         ]
       }
+    ]
+  },
+  "activitycontinuation": {
+    "apps": [
+      "9WSAC2X7NJ.com.turtil.nri"
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "9WSAC2X7NJ.com.turtil.nri"
     ]
   }
 }
